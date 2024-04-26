@@ -687,3 +687,554 @@ fn main() {
 
 Implement the activity on your own. Once you're done, compile and run your code using Cargo to see if it produces the expected output.
 
+## Match
+
+- Add logic to program
+- Similar to if..else
+- Exhaustive
+    - All options must be accounted for
+
+### Example with boolean
+
+```rust
+fn main() {
+    let some_bool = true;
+    match some_bool {
+        true => println! ("its true"),
+        false => println! ("its false"),
+    }
+}
+```
+
+### Example with int
+
+```rust
+fn main() {
+    let some_int = 3;
+    match some_int {
+        1 => println! ("its 1"),
+        2 => println! ("its 2"),
+        3 => println! ("its 3"),
+        => println! ("its something else"),
+    }
+}
+```
+
+### match vs else..if
+
+- `match` will be checked by the compiler
+    - If a new possibility is added, you will be notified when this occurs
+- `else..if` is not checked by the compiler
+    - If a new possibility is added, your code may contain a bug
+
+
+> ♟️ Prefer `match` over `else..if` when working with a single variable <br>
+♟️ `match` considers all possibilities <br>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;♟️ More robust code <br>
+♟️ Use underscore (`_`) to `match` "anything else" <br>
+
+### Making decisions with match
+
+```rust
+fn main() {
+    let my_name = "Liyana";
+    match my_name {
+        "Liyana" => println! ("that is my name"),
+        "Liviya" => println! ("not my name"),
+        "Ali" => println! ("hello ali"),
+        _ => println! ("nice to meet you!"), // Default pattern for any other value
+    }
+}
+```
+
+- We have a variable `my_name` set to "Liyana".
+- The `match` statement checks `my_name` against specific patterns.
+- If `my_name` matches "Liyana", we print "That's my name!".
+- If it matches "Liviya", we print "That's not my name.".
+- If it matches "Ali", we print "Hello, Ali!".
+- If `my_name` doesn't match any pattern, indicated by `_`, we print "Nice to meet you!".
+
+## Activity 4.1: Decision Making with Match
+
+In this activity, you'll practice using the match expression in Rust to display a message based on the value of a boolean variable.
+
+### Your task
+Your task is to create a Rust program that displays "it's true" if a boolean variable is true and "it's false" if the variable is false.
+
+### Steps
+
+- **Define the Boolean Variable:** Create a boolean variable named `my_bool` and set it to either `true` or `false`.
+- **Use Match Expression:** Utilize a `match` expression to determine which message to display based on the value of the `my_bool` variable.
+- **Display Message:** Inside the `match` expression, print "it's true" if the value is `true` and "it's false" if the value is `false`.
+
+```rust
+fn main() {
+    // Define the boolean variable
+    let my_bool = true;
+
+    // Use match expression to determine the message
+    match my_bool {
+        true => println!("it's true"),
+        false => println!("it's false"),
+    }
+}
+```
+
+### Output
+
+```
+it's true
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
+## Activity 4.2: Basic match expressions
+
+In this activity, you'll utilize the match expression in Rust to display a message based on the value of an integer variable.
+
+### Your Task
+
+Your task is to create a Rust program that displays "one", "two", "three", or "other" based on whether the value of a variable is 1, 2, 3, or some other number, respectively. 🎯
+
+### Steps
+
+- **Define the Integer Variable:** Create an integer variable named `my_number` and set it to any integer value.
+- **Use Match Expression:** Implement a `match` expression to determine which message to display based on the value of the `my_number` variable.
+- **Display Message:** Inside the `match` expression, print "One" if the value is 1, "Two" if the value is 2, "Three" if the value is 3, and "some other number" for any other value. 🖨️
+
+```rust
+fn main() {
+    // Define the integer variable
+    let my_number = 2;
+
+    // Use match expression to determine the message
+    match my_number {
+        1 => println!("One"),
+        2 => println!("Two"),
+        3 => println!("Three"),
+        _ => println!("some other number"),
+    }
+}
+```
+
+### Output
+
+```
+Two
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
+## Repetition using loop
+
+In Rust, the loop keyword allows you to create a loop that repeats indefinitely until you explicitly tell it to stop.
+
+```rust
+fn main() {
+    let mut i = 3;    
+    loop {
+        println!("{:?}", i);
+        i = i - 1;      // Decrement i by 1
+        if i == 0 {    // Check if i reached 0
+            break;    // If so, exit the loop
+        }
+    }
+    println!("done!");
+}
+```
+
+- We start with a variable `i` initialized to `3`.
+- Then, we enter an infinite `loop`.
+- Inside the `loop`, we print the current value of `i`.
+- We decrement `i` by    with each iteration of the `loop`.
+- If `i` becomes `0`, we exit the loop using the `break` keyword.
+- After exiting the `loop`, we print "done!" to indicate that the `loop` has finished.
+
+## Activity 5: Looping using the loop statement
+
+In this activity, you'll practice using the `loop` statement in Rust to display numbers from "1" through "4" in the terminal.
+
+### Your Task
+
+Your task is to create a Rust program that prints numbers from "1" through "4" in the terminal using a loop statement.
+
+### Steps
+
+- **Initialize a Mutable Variable:** Create a mutable integer variable named `x` and set its initial value to `1`.
+
+- **Use a Loop Statement:** Utilize a `loop` statement to repeatedly execute a block of code.
+
+- **Print the Variable:** Within the `loop`, print the current value of the variable `x` using `println!("{:?}", x)`.
+
+- **Exit the Loop:** Implement an `if` statement to check if the value of `x` equals `4`. If it does, use the `break` keyword to exit the `loop`.
+
+- **Increment the Variable:** Inside the `loop`, increment the value of `x` by `1` in each iteration using `x += 1`.
+
+```rust
+fn main() {
+    let mut x = 1;
+    loop { 
+        println!("{:?}", x); 
+        if x == 4 {
+            break;
+        }
+        x += 1;
+    }
+}
+```
+
+### Output
+
+```bash
+1
+2
+3
+4
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
+## Repetition using while loop
+
+The while loop executes a block of code repeatedly as long as a specified condition is true.
+
+```rust
+fn main() {
+    let mut i = 1;
+    while i <= 3 {
+        println!("{:?}", i);
+        i = i + 1;
+    }
+}
+```
+
+- We initialize a mutable variable `i` to `1`.
+- We use a `while` loop to repeat the block of code as long as the condition `i <= 3` is true.
+- Inside the loop, we print the value of `i` and then increment it by `1`.
+- The loop continues until `i` is no longer less than or equal to `3`.
+
+## Activity 6: Counting Down with While Loop
+
+In this activity, you'll practice using a while loop in Rust to count down from 5 to 1 and display the countdown in the terminal.
+
+### Your Task
+
+Your task is to create a Rust program that counts down from 5 to 1 and displays the countdown in the terminal, then prints "done!" when complete.
+
+### Steps
+
+- **Define a Mutable Integer Variable:** Create a mutable integer variable named `counter` and set it to `5`.
+- **Use a While Loop:** Utilize a `while` loop to repeatedly execute a block of code as long as the condition `counter >= 1` is true.
+- **Print the Countdown:** Inside the `while` loop, print the value of `counter`.
+- **Decrement the Counter:** After printing the value of `counter`, decrement it by `1`.
+- **Print "Done!":** After the loop, print "Done!" to indicate that the countdown is complete.
+
+```rust
+fn main() {
+    // Define a mutable integer variable
+    let mut counter = 5;
+
+    // Use a while loop to count down
+    while counter >= 1 {
+        // Print the variable within the while loop
+        println!("{:?}", counter);
+        
+        // Decrement the counter
+        counter -= 1;
+    }
+
+    println!("Done!"); // Print "Done!" after the loop
+}
+```
+
+### Output
+
+```
+5
+4
+3
+2
+1
+Done!
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
+## Working With Data | enum (Enumeration)
+
+- Data that can be one of multiple different possibilities
+    - Each possibility is called a "variant"
+- Provides information about your program to the compiler
+    - More robust programs
+
+```rust
+enum Direction {
+    Left,
+    Right
+}
+
+fn main() {
+    let go = Direction::left;
+    match go {
+        Direction::Left => println!("Go Left"),
+        Direction::Right => println!("Go Right"),
+    }
+}
+```
+
+- **Define `Direction enum`:** This has variants `Left` and `Right`.
+- **Initialize go:** Set to `Direction::Left`.
+- **Match statement:** Checks if `go` is `Left` `(prints "Go Left")` or `Right (prints "Go Right")`.
+- **Output:** Because `go` is `Left`, it prints `"Go Left"`.
+
+> ♦️ Enums can only be one variant at a time <br>
+♦️ More robust programs when paired with match <br>
+♦️ Make program code easier to read <br>
+
+## Activity 7: Printing Color Names
+
+In this activity, you'll create a Rust program that prints the name of a color to the terminal using an enum and a matching function.
+
+### Your Task
+
+Your task is to define an enum called `Color` with variants for different color names. Then, create a function named `print_color` that takes a `Color` enum as a parameter and prints the corresponding color name to the terminal.
+
+### Steps
+
+- **Define the Enum:** Declare an enum named `Color` with variants `Red`, `Green`, `Blue`, and `Black`.
+- **Declare the Function:** Write a function named `print_color` that takes a `Color` enum as a parameter.
+- **Match Expression:** Inside the `print_color` function, use a match expression to determine which color name to print based on the variant.
+- **Call the Function:** In the `main` function, call the `print_color` function with a chosen color variant.
+
+```rust
+// Define an enum with color names as variants
+enum Color {
+    Red,
+    Green,
+    Blue,
+    Black,
+}
+
+// Define a function to print the color name
+fn print_color(color: Color) {
+    // Use a match expression to determine which color name to print
+    match color {
+        Color::Red => println!("Red"),
+        Color::Green => println!("Green"),
+        Color::Blue => println!("Blue"),
+        Color::Black => println!("Black"),
+    }
+}
+
+fn main() {
+    // Call the print_color function with a color variant
+    print_color(Color::Black);
+}
+```
+
+### Output
+
+```
+Black
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to verify that it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
+
+## Working With Data | struct (Structure)
+
+- A type that contains multiple pieces of data
+    - All or nothing cannot have some pieces of data and not others
+- Each piece of data is called a "field"
+- Makes working with data easier
+    - Similar data can be grouped together
+
+```rust
+struct GroceryItem {
+    stock: i32,
+    price: f64,
+}
+
+fn main() {
+    let  oats = GroceryItem {
+        stock: 10,
+        price: 3.99,
+    };
+    println!("Stock: {:?}", oats.stock);
+    println!("Price: {:?}", oats.price);
+}
+```
+
+- We define a `struct` named `GroceryItem` to represent grocery items.
+- The `GroceryItem` struct has two fields: `stock` of type `i32` and `price` of type `f64`.
+- In the `main` function, we create an instance of the `GroceryItem` struct named `oats`.
+- We initialize the `oats` instance with a stock quantity of `10` and a price of `3.99`.
+- We then print the stock and price of the `oats` item using `println!` statements.
+
+> ♦️ Structs deal with multiple pieces of data <br>
+♦️ All fields must be present to create a struct <br>
+♦️ Fields can be accessed using a dot `(.)` <br>
+
+## Activity 7: Organizing Data with Structs and Enums
+
+In this activity, you'll practice using structs and enums in Rust to organize and represent data about different types of drinks.
+
+### Your Task
+
+Your task is to create a Rust program that prints the flavor and fluid ounces of various drinks.
+
+### Steps
+
+- **Define Enum for Drink Flavors:** Create an enum named `Flavor` to represent different flavors of drinks. Include variants for `Sweet`, `Fruity`, and `Spice`.
+- **Define Struct for Drink:** Create a struct named `Drink` to store information about a drink, including its `flavor` (using the `Flavor` enum) and `fluid_ounce`.
+- **Create a Function to Display Drink Details:** Implement a function named `display_drink` that takes a `Drink` as a parameter and prints out its flavor and fluid ounces. Use a match expression within this function to print the drink flavor based on the variant of the `Flavor` enum.
+- **Create Drink Instances:** In the `main` function, create at least two instances of `Drink`, each with its own flavor and fluid ounce information.
+- **Call the Display Function:** Call the `display_drink` function for each drink instance created in step 4 to print its flavor and fluid ounces.
+
+```rust
+// Define enum for drink flavors
+enum Flavor {
+    Sweet,
+    Fruity,
+    Spice,
+}
+
+// Define struct for drink
+struct Drink {
+    flavor: Flavor,
+    fluid_ounce: f64,
+}
+
+// Function to display drink details
+fn display_drink(drink: Drink) {
+    match drink.flavor {
+        Flavor::Sweet => println!("Flavor: Sweet"),
+        Flavor::Fruity => println!("Flavor: Fruity"),
+        Flavor::Spice => println!("Flavor: Spice"),
+    }
+    println!("Fluid Ounces: {:?}", drink.fluid_ounce);
+}
+
+fn main() {
+    // Create instances of Drink
+    let spice_drink = Drink {
+        flavor: Flavor::Spice,
+        fluid_ounce: 5.7,
+    };
+
+    let fruity_drink = Drink {
+        flavor: Flavor::Fruity,
+        fluid_ounce: 10.0,
+    };
+
+    // Display drink details
+    display_drink(spice_drink);
+    display_drink(fruity_drink);
+}
+```
+
+### Output
+
+```yaml
+Flavor: Spice
+Fluid Ounces: 5.7
+Flavor: Fruity
+Fluid Ounces: 10.0
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to ensure it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
+
+## Working With Data | Tuples
+
+- A type of "record".
+- Store data anonymously.
+    - No need to name fields.
+- Useful to return pairs of data from functions.
+- Can be "destructured" easily into variables.
+
+```rust
+fn main() {
+    let x = (1, 2);
+    println!("{:?}, {:?}", x.0, x.1);
+
+    let (x, y) = (2, 3);
+    println!("{:?}, {:?}", x, y);
+
+    let (name, age) = ("Liviya", 18);
+    println!("User Name: {:?}", name);
+    println!("User Age: {:?}", age);
+}
+```
+
+- **Tuple Declaration**: We create a tuple `x` with values `1` and `2`.
+- **Printing Tuple Elements**: Print both elements of `x` using `println!`.
+- **Tuple Destructuring**: We create a new tuple `(x, y)` with values `2` and `3`.
+- **Printing Destructured Tuple**: Print both elements of `(x, y)`, which is `(2, 3)`.
+- **Tuple Destructuring with Different Types**: We create a tuple `(name, age)` with values `"Liviya"` and `18`.
+- **Printing Destructured Tuple with Different Types**: Print the values of `name` and `age`.
+
+
+> ♦️ Allow for anonymous data access <br>
+♦️ Useful when destructuring <br>
+♦️ Can contain any number of fields <br>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;♦️ Use struct when more than 2 or 3 fields <br>
+
+
+## Activity 9: Data Management using Tuples
+
+In this activity, you'll work with tuples to manage data representing coordinates.
+
+### Your Task
+
+Your task is to create a Rust program that prints whether the y-value of a Cartesian coordinate is greater than 5, less than 5, or equal to 5.
+
+### Steps
+
+- **Define a Function**: Create a function named `coordinate` that returns a tuple representing Cartesian coordinates. The function should return `(3, 7)`.
+- **Destructure the Tuple**: Inside the `main` function, destructure the return value of the `coordinate` function into two variables, `_x` and `y`.
+- **Use Conditional Statements**: Use an `if..else if..else` block to determine whether the `y` value is greater than 5, less than 5, or equal to 5. Print the appropriate message in each case.
+
+```rust
+// * Use a function that returns a tuple
+fn coordinate() -> (i32, i32) {
+    (3, 7)
+}
+
+fn main() {
+    // * Destructure the return value into two variables
+    let (_x, y) = coordinate();
+
+    // * Use an if..else if..else block to determine what to print
+    if y > 5 {
+        println!("Greater than 5");
+    } else if y < 5 {
+        println!("Less than 5");
+    } else {
+        println!("Equal to 5");
+    }
+}
+```
+
+### Output
+
+```
+Greater than 5
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
