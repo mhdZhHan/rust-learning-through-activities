@@ -1238,3 +1238,88 @@ Greater than 5
 
 Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
 
+## Fundamentals | Expressions
+
+- Rust is an expression-based language.
+    - Most things are evaluated and return some value.
+- Expression values coalesce to a single point.
+    - Can be used for nesting logic.
+
+```rust
+enum Access {
+    Admin,
+    Manager,
+    User,
+    Guest
+}
+
+fn main() {
+    // secret file: admin only
+    let access_level = Access::Guest;
+    let can_access_file = match access_level {
+        Access::Admin => true,
+        _ => false
+    }
+
+    println!("{:?}", can_access_file);
+}
+```
+
+- **Enum Declaration**: Define an enum named `Access` with variants `Admin`, `Manager`, `User`, and `Guest`.
+- **Main Function**: Declare the main function.
+- **Access Level**: Initialize a variable `access_level` with the value `Access::Guest`.
+- **Access Check**: Use a match expression to check the `access_level`.
+  - If the `access_level` is `Access::Admin`, we set `can_access_file` to `true`.
+  - Otherwise (for all other access levels), we set `can_access_file` to `false`.
+- **Print Result**: Print the value of `can_access_file` to the console.
+
+
+> ♦️ Expressions allow nested logic <br>
+♦️ if and match expressions can be nested <br>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;♦️ Best to not use more than two or three levels
+
+## Activity 10: Working with Expressions
+
+In this activity, you'll practice working with expressions in Rust to determine whether a value is greater than 100.
+
+### Your Task
+
+Your task is to create a Rust program that prints "its big" if a variable is greater than 100 and "its small" if the variable is less than or equal to 100.
+
+### Steps
+
+- **Define a Function**: Create a function named `print_message` that takes a boolean parameter `gt_100`. Inside this function, use a `match` expression to determine whether `gt_100` is `true` or `false`. Print "It's big" if `gt_100` is `true`, and "It's small" if `gt_100` is `false`.
+- **Evaluate the Expression**: In the `main` function, create a variable named `value` and set it to `100`. Then, create a boolean variable named `is_gt_100` and set it to the result of the expression `value > 100`. This expression evaluates to `true` if `value` is greater than 100 and `false` otherwise.
+- **Print the Message**: Call the `print_message` function and pass `is_gt_100` as an argument.
+
+```rust
+// * Use a match expression to determine which message
+//   to print
+fn print_message(gt_100: bool) {
+    match  gt_100 {
+        true => println!("It's big"),
+        false => println!("It's small")
+    }
+}
+
+fn main() {
+    // * Use a boolean variable set to the result of
+    //   an if..else expression to store whether the value
+    //   is > 100 or <= 100
+    let value = 100;
+    let is_gt_100 = value > 100; // shortcut instead of doing if..else
+
+    print_message(is_gt_100);
+}
+```
+
+### output
+
+```
+It's small
+```
+
+### Test Your Code
+
+Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
+
