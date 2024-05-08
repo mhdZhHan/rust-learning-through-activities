@@ -1323,3 +1323,76 @@ It's small
 
 Compile and run your code using Cargo to see if it produces the expected output. If the output matches the expected result, then your implementation is correct! 🏆
 
+## Fundamentals | Intermediate Memory
+
+- Memory is stored using binary
+    - Bits: 0 or 1
+- Computer optimized for bytes
+    - 1 byte == 8 contiguous bits
+- Fully Jayson Lennon
+
+### Memory Address
+
+- All data in memory has an "address"
+    - Used to locate data
+    - Allow the same - only data changes
+- Usually don't utilize address directly
+    - Variables handle most of the work
+
+
+### Memory Offsets
+
+- Items can be located at an address using an `offset`
+- Offset begin at 0
+- Represent the number of bytes away from the original address
+    - Normally deal with indexes instead
+
+
+> ♦️ Memory uses address & offsets <br>
+♦️ Address are permanent, data differs <br>
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;♦️ Offsets can be used to "index" into some data
+
+## Ownership
+
+### Managing Memory
+
+- Programs must track memory
+    - If they fail to do so, a `leak` occurs
+- Rust utilizes an `ownership` model to manage
+memory
+    - The `owner` of memory is responsible for cleaning up the memory
+- Memory can either be `moved` or `borrowed`
+
+> ♟️ Memory must be managed in some way to prevent leaks  <br />
+♟️ Rust uses `ownership` to accomplish memory management <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;♟️ The `owner` of data must clean up the memory <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;♟️ This occurs automatically at the end of the scope <br />
+♟️ Default behavior is to `move` memory to a new owner <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;♟️ Use an ampersand (&) to allow code to `borrow` memory <br />
+
+```rust
+struct Book {
+    pages: 132,
+    rating: 132,
+}
+
+fn display_page_count(book: &Book) {
+    println! ("pages = {:?}", book.pages);
+}
+
+fn display_rating(book: &Book) {
+    println! ("rating = {:?}", book.rating);
+}
+
+fn main() {
+    let book = Book {
+        pages: 5,
+        rating: 9,
+    };
+
+    display_page_count(&book);
+    display_rating(&book);
+}
+```
+
+<!-- explain -->
