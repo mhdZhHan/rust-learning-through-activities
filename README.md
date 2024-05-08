@@ -16,27 +16,6 @@ This repository contains a collection of Rust learning activities. Each activity
 6. [Activity 7: Working with an enum](/src/bin/a7.rs)
 7. [Activity 8: Organizing similar data using structs](/src/bin/a8.rs)
 
-
-## Activity 1: Functions
-
-Display your first and last name using separate functions.
-
-## Activity 2: Basic Arithmetic
-
-Display the result of the sum of two numbers.
-
-## Activity 3: Flow Control using if..else
-
-Display a message based on the value of a boolean variable.
-
-## Activity 3b: Flow Control using if..else if..else
-
-Display `>5`, `<5`, or `=5` based on the value of a variable.
-
-## Activity 4a: Decision Making with match
-
-Display "it's true" or "it's false" based on the value of a boolean variable.
-
 ## Usage
 
 Each activity is contained within its own Rust source file (`.rs`) located in the `src/bin` directory. To run a specific activity, use the `cargo run --bin <activity_name>` command.
