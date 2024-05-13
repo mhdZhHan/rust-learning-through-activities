@@ -25,7 +25,7 @@ This repository contains a collection of Rust learning activities. Each activity
 15. [Activity 15: Advanced match](/src/bin/a15.rs)
 16. [Activity 16: Option](/src/bin/a16.rs)
 17. [Activity 17: Browsing standard library documentation](/src/bin/a17.rs)
-18. **Flow Control**
+18. **Result**
 
 -   18.1 [Activity 18a: Result](/src/bin/a18a.rs)
 -   18.2 [Activity 18b: Result & the question mark operator](/src/bin/a18b.rs)
